@@ -34,4 +34,12 @@ public abstract class ValkyrieMessage {
 	public int getMessageLength() {
 		return getMessageData().size();
 	}
+	
+	/**
+	 * Provides the internal ID of this message. This ID is only valid within
+	 * one node of the peer network.
+	 */
+	public long getId() {
+		return id;
+	}
 }
