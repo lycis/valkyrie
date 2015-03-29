@@ -24,6 +24,7 @@ public class ValkyrieNetwork {
 	private int port = 6781;
 	private InetAddress address = null;
 	private MulticastSocket mcSocket = null;
+	private Thread mcHandlingThread;
 
 	private static String DEFAULT_ADDRESS = "239.199.28.1";
 	private static int DEFAULT_PORT = 6781;
@@ -135,7 +136,10 @@ public class ValkyrieNetwork {
 		mcSocket = new MulticastSocket(port);
 		mcSocket.joinGroup(address);
 		
-		// TODO start event handling thread
+		// start event handling thread
+		mcHandlingThread = new Thread(new MulticastHandler(mcSocket));
+		mcHandlingThread.start();
+		
 		// TODO send joined event to everybody
 	}
 }
