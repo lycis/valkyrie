@@ -50,6 +50,13 @@ public class ValkyrieMessageHeader {
 		return id;
 	}
 	
+	/**
+	 * Sets the type of this message. When implementing your own custom
+	 * messages keep in mind that you should only use positive numbers.
+	 * Negative numbers are reserved for valkyrie system messages.
+	 * 
+	 * @param messageType
+	 */
 	public void setMessageType(int messageType) {
 		this.messageType = messageType;
 	}
